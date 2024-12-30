@@ -8,15 +8,15 @@ class Deck
 
   def initialize
     @cards = build_deck
-    suffle!
+    shuffle!
   end
 
   def build_deck
     SUITS.product(RANKS).map { |suit, rank| Card.new(rank, suit) }
   end
 
-  def suffle!
-    cards.suffle!
+  def shuffle!
+    cards.shuffle!
   end
 
   def deal
