@@ -8,7 +8,7 @@ class Deck
 
   def initialize
     @cards = build_deck
-    shuffle!
+    suffle!
   end
 
   def build_deck
