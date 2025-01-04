@@ -1,4 +1,6 @@
-class Card 
+# frozen_string_literal: true
+
+class Card
   attr_reader :rank, :suit
 
   def initialize(rank, suit)

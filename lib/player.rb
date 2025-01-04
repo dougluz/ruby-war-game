@@ -1,4 +1,6 @@
-class Player 
+# frozen_string_literal: true
+
+class Player
   attr_reader :name, :hand
 
   def initialize(name, hand = [])
@@ -11,7 +13,7 @@ class Player
   end
 
   def play_war_cards(quantity = 3)
-    return hand.shift(quantity)
+    hand.shift(quantity)
   end
 
   def add_cards(cards)

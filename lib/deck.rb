@@ -1,8 +1,10 @@
-require_relative "card"
+# frozen_string_literal: true
+
+require_relative 'card'
 
 class Deck
-  SUITS = %w[Hearts Diamonds Clubs Spades]
-  RANKS = %w[2 3 4 5 6 7 8 9 10 Jack Queen King Ace]
+  SUITS = %w[Hearts Diamonds Clubs Spades].freeze
+  RANKS = %w[2 3 4 5 6 7 8 9 10 Jack Queen King Ace].freeze
 
   attr_reader :cards
 

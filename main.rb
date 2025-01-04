@@ -1,4 +1,6 @@
-require_relative "lib/game"
+# frozen_string_literal: true
 
-game = Game.new("Douglas", "Mariana")
+require_relative 'lib/game'
+
+game = Game.new('Douglas', 'Mariana')
 game.play
