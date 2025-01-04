@@ -10,6 +10,10 @@ class Player
     hand.shift
   end
 
+  def play_war_cards(quantity = 3)
+    return hand.shift(quantity)
+  end
+
   def add_cards(cards)
     hand.concat(cards)
   end

@@ -29,15 +29,54 @@ class Game
 
     if card_value(player1_card) > card_value(player2_card)
       player1.add_cards([player1_card, player2_card])
-      puts "#{player 1} wins"
-    elseif card_value(player2_card) > card_value(player1_card)
+      puts "#{player1.name} wins"
+    elsif card_value(player2_card) > card_value(player1_card)
      player2.add_cards([player1_card, player2_card])
-    else 
-      puts "war"
+     puts "#{player2.name} wins"
+    else
+     war([player1_card, player2_card]) 
     end
   end
 
-  def resolve_tie
+  # the case when some of the players has less cards than necessary is 
+  # not covered yet
+  def war(table_cards = [])
+    if player1.hand.empty? || player2.hand.empty?
+      declare_winner
+      return
+    end
+
+    hand_size = get_war_hand_size
+
+    player1_cards = player1.play_war_cards(hand_size)
+    player2_cards = player2.play_war_cards(hand_size)
+    tied_cards = player1_cards + player2_cards + table_cards
+
+    player1_cards.each_with_index do |card, index|
+      player1_card_value = card_value(card)
+      player2_card_value = card_value(player2_cards[index])
+
+      if player1_card_value > player2_card_value
+        puts "#{player1.name} wins the war"
+        return player1.add_cards(tied_cards)
+      elsif player1_card_value < player2_card_value
+        puts "#{player2.name} wins the war"
+        return player2.add_cards(tied_cards)
+      else
+        puts "war draw"
+      end
+    end
+
+    war(tied_cards)
+  end
+
+  def get_war_hand_size
+    return 3 if players_smaller_hand_size >= 3
+    return players_smaller_hand_size
+  end
+
+  def players_smaller_hand_size
+    return [player1.hand.size, player2.hand.size].min
   end
 
   def card_value(card)
@@ -47,7 +86,7 @@ class Game
   def declare_winner
     if player1.hand.empty?
       puts "#{player2.name} wins the game!"
-    elseif player2.hand.empty?
+    elsif player2.hand.empty?
       puts "#{player1.name} wins the game!"
     end
   end
