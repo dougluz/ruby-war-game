@@ -3,6 +3,7 @@ GEM
   specs:
     ast (2.4.2)
     diff-lcs (1.5.1)
+    gosu (1.4.6)
     json (2.9.1)
     language_server-protocol (3.17.0.3)
     parallel (1.26.3)
@@ -47,6 +48,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  gosu
   rspec
   rubocop
 
