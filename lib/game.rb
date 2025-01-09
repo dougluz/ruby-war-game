@@ -51,7 +51,7 @@ class Game
     player1_cards = player1.play_war_cards(hand_size)
     player2_cards = player2.play_war_cards(hand_size)
     tied_cards = player1_cards + player2_cards + table_cards
-    puts tied_cards
+
     player1_cards.each_with_index do |card, index|
       player1_card_value = card_value(card)
       player2_card_value = card_value(player2_cards[index])
